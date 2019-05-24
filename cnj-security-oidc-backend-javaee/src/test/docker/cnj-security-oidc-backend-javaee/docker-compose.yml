@@ -1,0 +1,19 @@
+# docker-compose.yml
+# ----------------------------------------------------------------------------
+# Composes Docker containers and volumes to a runnable Java EE application
+# ----------------------------------------------------------------------------
+#
+---
+version: '3'
+
+services:
+
+  backend:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-security-oidc-backend-javaee:latest
+    ports:
+      - "8080:8080"
+    environment:
+      MP_JWT_VERIFY_PUBLICKEY_LOCATION: "http://10.118.19.113:30080/auth/realms/cloudtrain/protocol/openid-connect/certs"
+      MP_JWT_VERIFY_ISSUER: "http://10.118.19.113:30080/auth/realms/cloudtrain"
+
+
