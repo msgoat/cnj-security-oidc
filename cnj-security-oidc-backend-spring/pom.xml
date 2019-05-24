@@ -616,7 +616,7 @@
                                         <test.target.route>${test.target.route}</test.target.route>
                                     </systemPropertyVariables>
                                     <dependenciesToScan>
-                                        <dependency>group.msg.at.cloud:cnj-hello-backend-test</dependency>
+                                        <dependency>group.msg.at.cloud:cnj-security-oidc-backend-test</dependency>
                                     </dependenciesToScan>
                                 </configuration>
                             </execution>
