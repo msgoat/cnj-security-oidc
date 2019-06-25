@@ -7,11 +7,18 @@
   <version>1.0.0</version>
   <packaging>war</packaging>
   <description>Cloud native Java backend using OpenID Connect Security based on Java EE Full Profile</description>
+  <distributionManagement>
+    <repository>
+      <id>at41-maven-repository</id>
+      <name>msg Automotive AT Maven Releases Repository</name>
+      <url>https://nexus.at.automotive.msg.team/repository/msgoat-maven-releases/</url>
+    </repository>
+  </distributionManagement>
   <properties>
     <maven.flatten.plugin.version>1.1.0</maven.flatten.plugin.version>
     <changelist></changelist>
     <docker.verbose>true</docker.verbose>
-    <maven.helm.plugin.version>0.7.5</maven.helm.plugin.version>
+    <maven.helm.plugin.version>0.9.0</maven.helm.plugin.version>
     <maven.war.plugin.version>3.2.2</maven.war.plugin.version>
     <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,6 +30,7 @@
     <maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
     <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
     <java.version>1.8</java.version>
+    <helm.tillerNamespace>sys-tiller</helm.tillerNamespace>
     <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
     <sha1></sha1>
     <docker.organization.name>cloudtrain</docker.organization.name>
@@ -641,22 +649,6 @@
                   <skip>true</skip>
                 </configuration>
               </execution>
-              <execution>
-                <id>copy-helm-resources</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>copy-resources</goal>
-                </goals>
-                <configuration>
-                  <resources>
-                    <resource>
-                      <directory>${project.basedir}/src/main/helm</directory>
-                      <filtering>true</filtering>
-                    </resource>
-                  </resources>
-                  <outputDirectory>${project.build.directory}/helm-resources</outputDirectory>
-                </configuration>
-              </execution>
             </executions>
           </plugin>
           <plugin>
@@ -670,7 +662,7 @@
                   <goal>install</goal>
                 </goals>
                 <configuration>
-                  <helmChartDirectory>${project.build.directory}/helm-resources/${project.artifactId}</helmChartDirectory>
+                  <helmChartDirectory>src/main/helm/${project.artifactId}</helmChartDirectory>
                   <helmReleaseName>${project.artifactId}</helmReleaseName>
                   <helmNamespace>int</helmNamespace>
                 </configuration>

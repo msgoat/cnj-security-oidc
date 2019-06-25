@@ -28,7 +28,8 @@
         <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
         <maven.spring.boot.plugin.version>${spring.boot.version}</maven.spring.boot.plugin.version>
         <keycloak.version>4.8.3.Final</keycloak.version>
-        <maven.helm.plugin.version>0.7.5</maven.helm.plugin.version>
+        <maven.helm.plugin.version>0.9.0</maven.helm.plugin.version>
+        <helm.tillerNamespace>sys-tiller</helm.tillerNamespace>
         <maven.flatten.plugin.version>1.1.0</maven.flatten.plugin.version>
         <!-- new Maven version management -->
         <revision>1.0.0</revision>
@@ -687,22 +688,6 @@
                                     <skip>true</skip>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>copy-helm-resources</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <resources>
-                                        <resource>
-                                            <directory>${project.basedir}/src/main/helm</directory>
-                                            <filtering>true</filtering>
-                                        </resource>
-                                    </resources>
-                                    <outputDirectory>${project.build.directory}/helm-resources</outputDirectory>
-                                </configuration>
-                            </execution>
                         </executions>
                     </plugin>
                     <!-- install/upgrade helm release before running tests; delete helm release after running tests -->
@@ -717,7 +702,7 @@
                                     <goal>install</goal>
                                 </goals>
                                 <configuration>
-                                    <helmChartDirectory>${project.build.directory}/helm-resources/${project.artifactId}</helmChartDirectory>
+                                    <helmChartDirectory>src/main/helm/${project.artifactId}</helmChartDirectory>
                                     <helmReleaseName>${project.artifactId}</helmReleaseName>
                                     <helmNamespace>int</helmNamespace>
                                 </configuration>
