@@ -9,7 +9,17 @@ ENV JAVA_OPTS="" \
     DOCKER_JAVA_OPTS="" \
     SPRING_JAVA_OPTS="" \
     SPRING_PROFILES_ACTIVE="default" \
-    CNAP_CLOUD="local"
+    CNAP_CLOUD="local" \
+# Keycloak OpenID Connect Provider configuration (empty values must be provided!)
+    KEYCLOAK_REALM="" \
+    KEYCLOAK_AUTH_SERVER_URL="" \
+    KEYCLOAK_SSL_REQUIRED="" \
+    KEYCLOAK_RESOURCE="" \
+    KEYCLOAK_CREDENTIALS_SECRET="" \
+    KEYCLOAK_USE_RESOURCE_ROLE_MAPPINGS="true" \
+    KEYCLOAK_PRINCIPAL_ATTRIBUTE="preferred_username" \
+    KEYCLOAK_BEARER_ONLY="true" \
+    KEYCLOAK_VERIFY_TOKEN_AUDIENCE="false"
 
 RUN echo "adding run user spring to system" \
     && addgroup -S spring -g 1000 \

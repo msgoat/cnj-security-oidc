@@ -55,3 +55,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Keycloak Open ID Connect Provider configuration
+keycloak:
+  realm: "cloudtrain"
+  authServerUrl: "http://k8sapps.at.automotive.msg.team/auth"
+  sslRequired: "none"
+  resource: "cnj-cloudtrain"
+  credentialsSecret: "158766ce-734b-4ba2-8e2c-985694b295fb"
+  useResourceRoleMappings: true
+  principalAttribute: "preferred_username"
+  bearerOnly: true
+  verifyTokenAudience: false
+
