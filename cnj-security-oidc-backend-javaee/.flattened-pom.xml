@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>group.msg.at.cloud</groupId>
   <artifactId>cnj-security-oidc-backend-javaee</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <packaging>war</packaging>
   <description>Cloud native Java backend using OpenID Connect Security based on Java EE Full Profile</description>
   <distributionManagement>
@@ -21,13 +21,15 @@
     <maven.helm.plugin.version>0.9.0</maven.helm.plugin.version>
     <maven.war.plugin.version>3.2.2</maven.war.plugin.version>
     <maven.resources.plugin.version>3.1.0</maven.resources.plugin.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
-    <revision>1.0.0</revision>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <revision>2.0.0</revision>
+    <payara.version>5.192</payara.version>
     <docker.registry.name>docker.at.automotive.msg.team</docker.registry.name>
     <junit.version>5.3.2</junit.version>
     <microprofile.version>2.1</microprofile.version>
     <maven.failsafe.plugin.version>2.22.1</maven.failsafe.plugin.version>
+    <maven.compose.plugin.version>1.0.0</maven.compose.plugin.version>
     <maven.enforcer.plugin.version>3.0.0-M2</maven.enforcer.plugin.version>
     <java.version>1.8</java.version>
     <helm.tillerNamespace>sys-tiller</helm.tillerNamespace>
@@ -43,22 +45,23 @@
     <maven.site.plugin.version>3.7.1</maven.site.plugin.version>
     <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
     <maven.jar.plugin.version>3.1.1</maven.jar.plugin.version>
+    <javaee.version>8.0</javaee.version>
     <docker.removeMode>all</docker.removeMode>
     <docker.cleanup>try</docker.cleanup>
   </properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>fish.payara.extras</groupId>
-        <artifactId>payara-embedded-all</artifactId>
-        <version>5.184</version>
-        <scope>provided</scope>
-      </dependency>
-      <dependency>
         <groupId>javax</groupId>
         <artifactId>javaee-api</artifactId>
-        <version>8.0</version>
+        <version>${javaee.version}</version>
         <scope>compile</scope>
+      </dependency>
+      <dependency>
+        <groupId>fish.payara.extras</groupId>
+        <artifactId>payara-embedded-all</artifactId>
+        <version>${payara.version}</version>
+        <scope>provided</scope>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -114,7 +117,7 @@
     <dependency>
       <groupId>group.msg.at.cloud</groupId>
       <artifactId>cnj-security-oidc-backend-test</artifactId>
-      <version>1.0.0</version>
+      <version>2.0.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -129,8 +132,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven.compiler.plugin.version}</version>
           <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
             <parameters>true</parameters>
           </configuration>
         </plugin>
@@ -175,9 +178,9 @@
           <version>${maven.docker.plugin.version}</version>
         </plugin>
         <plugin>
-          <groupId>com.dkanejs.maven.plugins</groupId>
-          <artifactId>docker-compose-maven-plugin</artifactId>
-          <version>${maven.docker.compose.plugin.version}</version>
+          <groupId>group.msg.at.cloud.tools</groupId>
+          <artifactId>compose-maven-plugin</artifactId>
+          <version>${maven.compose.plugin.version}</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -327,7 +330,7 @@
                       <build>
                         <dockerFileDir>T:\data\workspaces\cnj-security-oidc\cnj-security-oidc-backend-javaee\target/docker-resources</dockerFileDir>
                         <tags>
-                          <tag>1.0.0</tag>
+                          <tag>2.0.0</tag>
                         </tags>
                       </build>
                     </image>
@@ -337,20 +340,18 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>com.dkanejs.maven.plugins</groupId>
-            <artifactId>docker-compose-maven-plugin</artifactId>
-            <version>2.2.0</version>
+            <groupId>group.msg.at.cloud.tools</groupId>
+            <artifactId>compose-maven-plugin</artifactId>
+            <version>1.0.0</version>
             <executions>
               <execution>
                 <id>start-docker-containers</id>
                 <phase>pre-integration-test</phase>
                 <goals>
-                  <goal>up</goal>
+                  <goal>upWithLogs</goal>
                 </goals>
                 <configuration>
                   <composeFile>T:\data\workspaces\cnj-security-oidc\cnj-security-oidc-backend-javaee/src/test/docker/cnj-security-oidc-backend-javaee/docker-compose.yml</composeFile>
-                  <detachedMode>true</detachedMode>
-                  <verbose>false</verbose>
                 </configuration>
               </execution>
               <execution>
@@ -381,7 +382,7 @@
                     <include>**/*SystemTest.java</include>
                   </includes>
                   <systemPropertyVariables>
-                    <test.target.route>http://localhost:8080</test.target.route>
+                    <test.target.route>http://192.168.99.100:8080</test.target.route>
                   </systemPropertyVariables>
                   <dependenciesToScan>
                     <dependency>group.msg.at.cloud:cnj-security-oidc-backend-test</dependency>
@@ -546,19 +547,17 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>com.dkanejs.maven.plugins</groupId>
-            <artifactId>docker-compose-maven-plugin</artifactId>
+            <groupId>group.msg.at.cloud.tools</groupId>
+            <artifactId>compose-maven-plugin</artifactId>
             <executions>
               <execution>
                 <id>start-docker-containers</id>
                 <phase>pre-integration-test</phase>
                 <goals>
-                  <goal>up</goal>
+                  <goal>upWithLogs</goal>
                 </goals>
                 <configuration>
                   <composeFile>${project.basedir}/src/test/docker/${project.artifactId}/docker-compose.yml</composeFile>
-                  <detachedMode>true</detachedMode>
-                  <verbose>false</verbose>
                 </configuration>
               </execution>
               <execution>
@@ -569,6 +568,8 @@
                 </goals>
                 <configuration>
                   <composeFile>${project.basedir}/src/test/docker/${project.artifactId}/docker-compose.yml</composeFile>
+                  <removeVolumes>true</removeVolumes>
+                  <removeOrphans>true</removeOrphans>
                 </configuration>
               </execution>
             </executions>
@@ -659,12 +660,13 @@
                 <id>helm-install</id>
                 <phase>pre-integration-test</phase>
                 <goals>
-                  <goal>install</goal>
+                  <goal>deploy</goal>
                 </goals>
                 <configuration>
                   <helmChartDirectory>src/main/helm/${project.artifactId}</helmChartDirectory>
                   <helmReleaseName>${project.artifactId}</helmReleaseName>
-                  <helmNamespace>int</helmNamespace>
+                  <helmReleaseNamespace>int</helmReleaseNamespace>
+                  <debug>true</debug>
                 </configuration>
               </execution>
               <execution>
