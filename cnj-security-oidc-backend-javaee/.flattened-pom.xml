@@ -382,7 +382,7 @@
                     <include>**/*SystemTest.java</include>
                   </includes>
                   <systemPropertyVariables>
-                    <test.target.route>http://192.168.99.100:8080</test.target.route>
+                    <test.target.route>http://localhost:38080</test.target.route>
                   </systemPropertyVariables>
                   <dependenciesToScan>
                     <dependency>group.msg.at.cloud:cnj-security-oidc-backend-test</dependency>

@@ -372,7 +372,7 @@
                                 <id>start-docker-containers</id>
                                 <phase>pre-integration-test</phase>
                                 <goals>
-                                    <goal>up</goal>
+                                    <goal>upWithLogs</goal>
                                 </goals>
                                 <configuration>
                                     <composeFile>

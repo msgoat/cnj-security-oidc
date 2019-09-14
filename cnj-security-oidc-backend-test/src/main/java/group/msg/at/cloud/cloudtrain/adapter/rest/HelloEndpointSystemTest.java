@@ -32,6 +32,7 @@ public class HelloEndpointSystemTest {
     @Test
     public void testGetWelcomeMessage() {
         given().auth().oauth2(fixture.getAccessToken())
+                .accept(ContentType.JSON)
                 .get("api/v1/hello")
                 .then().assertThat()
                 .statusCode(200)

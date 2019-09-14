@@ -11,7 +11,7 @@ services:
   backend:
     image: docker.at.automotive.msg.team/cloudtrain/cnj-security-oidc-backend-javaee:latest
     ports:
-      - "8080:8080"
+      - "38080:8080"
     environment:
       MP_JWT_VERIFY_PUBLICKEY_LOCATION: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain/protocol/openid-connect/certs"
       MP_JWT_VERIFY_ISSUER: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain"
