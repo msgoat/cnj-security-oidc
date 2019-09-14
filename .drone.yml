@@ -3,30 +3,6 @@ pipeline:
     image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
     commands:
       - mvn clean deploy -f cnj-security-oidc-backend-test/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles commit-stage
-  javaee-commit-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean deploy -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles commit-stage
-  javaee-dockerize-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean install -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles dockerize-stage -Dtest.target.route=http://10.118.17.191:38080
-  javaee-integration-test-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean verify -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles integration-test-stage -Dtest.target.route=http://k8sapps.at.automotive.msg.team/cnj-security-oidc-backend-javaee
-  micro-commit-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean deploy -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles commit-stage
-  micro-dockerize-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean install -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles dockerize-stage -Dtest.target.route=http://10.118.17.191:38080
-  micro-integration-test-stage:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
-    commands:
-      - mvn clean verify -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles integration-test-stage -Dtest.target.route=http://k8sapps.at.automotive.msg.team/cnj-security-oidc-backend-micro
   spring-commit-stage:
     image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
     commands:
@@ -39,5 +15,29 @@ pipeline:
     image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
     commands:
       - mvn clean verify -f cnj-security-oidc-backend-spring/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles integration-test-stage -Dtest.target.route=http://k8sapps.at.automotive.msg.team/cnj-security-oidc-backend-spring
+  micro-commit-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean deploy -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles commit-stage
+  micro-dockerize-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean install -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles dockerize-stage -Dtest.target.route=http://10.118.17.191:38080
+  micro-integration-test-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean verify -f cnj-security-oidc-backend-micro/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles integration-test-stage -Dtest.target.route=http://k8sapps.at.automotive.msg.team/cnj-security-oidc-backend-micro
+  javaee-commit-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean deploy -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles commit-stage
+  javaee-dockerize-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean install -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles dockerize-stage -Dtest.target.route=http://10.118.17.191:38080
+  javaee-integration-test-stage:
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-drone-mvn-k8s
+    commands:
+      - mvn clean verify -f cnj-security-oidc-backend-javaee/pom.xml --batch-mode --fail-fast --errors -V -U -Dsurefire.useFile=false --activate-profiles integration-test-stage -Dtest.target.route=http://k8sapps.at.automotive.msg.team/cnj-security-oidc-backend-javaee
 
     
