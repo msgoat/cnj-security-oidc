@@ -53,13 +53,13 @@ spec:
             - name: KEYCLOAK_CREDENTIALS_SECRET
               value: {{ .Values.keycloak.credentialsSecret }}
             - name: KEYCLOAK_USE_RESOURCE_ROLE_MAPPINGS
-              value: {{ .Values.keycloak.useResourceRoleMappings }}
+              value: {{ .Values.keycloak.useResourceRoleMappings | quote }}
             - name: KEYCLOAK_PRINCIPAL_ATTRIBUTE
               value: {{ .Values.keycloak.principalAttribute }}
             - name: KEYCLOAK_BEARER_ONLY
-              value: {{ .Values.keycloak.bearerOnly }}
+              value: {{ .Values.keycloak.bearerOnly | quote }}
             - name: KEYCLOAK_VERIFY_TOKEN_AUDIENCE
-              value: {{ .Values.keycloak.verifyTokenAudience }}
+              value: {{ .Values.keycloak.verifyTokenAudience | quote }}
   {{- if .Values.image.pullSecret }}
       imagePullSecrets:
         - name: {{ .Values.image.pullSecret }}
