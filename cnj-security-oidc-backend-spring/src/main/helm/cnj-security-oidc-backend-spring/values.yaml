@@ -62,7 +62,7 @@ keycloak:
   authServerUrl: "http://k8sapps.at.automotive.msg.team/auth"
   sslRequired: "none"
   resource: "cnj-cloudtrain"
-  credentialsSecret: "84c385da-610a-44c5-9560-b54b682cf90b"
+  credentialsSecret: "5268cc21-a423-48cc-8082-4930b070354e"
   useResourceRoleMappings: true
   principalAttribute: "preferred_username"
   bearerOnly: true

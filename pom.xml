@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>group.msg.at.cloud</groupId>
     <artifactId>cnj-security-oidc</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.1</version>
     <packaging>pom</packaging>
     <description>Cloud native Java application showcase for OpenID Connect security</description>
     <properties>

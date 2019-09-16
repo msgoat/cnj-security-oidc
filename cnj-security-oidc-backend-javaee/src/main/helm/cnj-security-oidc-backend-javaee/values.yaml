@@ -58,5 +58,5 @@ affinity: {}
 # security configuration (MP JWT AUTH)
 mp:
   jwt:
-    verifyPublicKeyLocation: "http://cnj-k8s-iam-keycloak-http.sys-iam/auth/realms/cloudtrain/protocol/openid-connect/certs"
-    verifyIssuer: "http://cnj-k8s-iam-keycloak-http.sys-iam/auth/realms/cloudtrain"
+    verifyPublicKeyLocation: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain/protocol/openid-connect/certs"
+    verifyIssuer: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain"
