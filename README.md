@@ -11,6 +11,12 @@ In this showcase, KeyCloak is used as an OpenID Connect Authentication Provider.
 ## Status
 ![Build status](https://drone.at.automotive.msg.team/api/badges/cloudtrain/cnj-security-oidc/status.svg)
 
+## Release information
+
+Latest version is: `3.0.0`.
+
+A changelog can be found in [changelog.md](changelog.md).
+
 ## Build this showcase 
 
 ### Prerequisites
@@ -19,7 +25,9 @@ In order to run the build, you have to install the following tools locally:
 * Docker
 * Docker Compose 
 * Maven
-* Java JDK 8
+* Java JDK 11
+
+You need to have an Open ID connect provider (like KeyCloak) up an running.
 
 ### Run Maven
 

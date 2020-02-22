@@ -30,7 +30,15 @@ public class HelloEndpointSystemTest {
     }
 
     @Test
-    public void testGetWelcomeMessage() {
+    public void getWelcomeMessageWithoutIdTokenFails() {
+        given().accept(ContentType.JSON)
+                .get("api/v1/hello")
+                .then().assertThat()
+                .statusCode(401);
+    }
+
+    @Test
+    public void getWelcomeMessageWithIdTokenSucceeds() {
         given().auth().oauth2(fixture.getAccessToken())
                 .accept(ContentType.JSON)
                 .get("api/v1/hello")

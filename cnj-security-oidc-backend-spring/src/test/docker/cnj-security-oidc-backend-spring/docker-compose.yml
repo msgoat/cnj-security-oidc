@@ -9,7 +9,7 @@ version: '3'
 services:
 
   backend:
-    image: docker.at.automotive.msg.team/cloudtrain/cnj-security-oidc-backend-spring:latest
+    image: docker.at.automotive.msg.team/cloudtrain/cnj-security-oidc-backend-spring:${project.version}
     ports:
       - "38080:8080"
     environment:
