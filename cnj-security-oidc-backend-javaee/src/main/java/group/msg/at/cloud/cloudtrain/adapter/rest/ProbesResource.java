@@ -1,5 +1,6 @@
 package group.msg.at.cloud.cloudtrain.adapter.rest;
 
+import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -24,6 +25,7 @@ import javax.ws.rs.core.Response;
 @RequestScoped
 @Path("v1/probes")
 @Produces(MediaType.TEXT_PLAIN)
+@PermitAll
 public class ProbesResource {
 
     /**

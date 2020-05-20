@@ -29,6 +29,7 @@ public class HelloWorld {
     public Message getHelloAdminMessage() {
         return null;
     }
+
     private String getAuthenticatedUserName() {
         String result = "anonymous";
         Principal principal = this.sessionContext.getCallerPrincipal();

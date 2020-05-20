@@ -3,6 +3,7 @@ package group.msg.at.cloud.cloudtrain.adapter.rest;
 import group.msg.at.cloud.cloudtrain.core.boundary.HelloWorld;
 import group.msg.at.cloud.cloudtrain.core.entity.Message;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -23,6 +24,7 @@ import javax.ws.rs.core.Response;
 @Path("v1/hello")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed("CLOUDTRAIN_USER")
 public class HelloResource {
 
     @Inject

@@ -1,8 +1,9 @@
 package group.msg.at.cloud.cloudtrain.adapter.rest;
 
-import group.msg.at.cloud.cloudtrain.core.entity.Message;
 import group.msg.at.cloud.cloudtrain.core.boundary.HelloWorld;
+import group.msg.at.cloud.cloudtrain.core.entity.Message;
 
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -33,6 +34,7 @@ public class HelloResource {
     private HelloWorld boundary;
 
     @GET
+    @RolesAllowed("CLOUDTRAIN_USER")
     public Response getWelcomeMessage() {
         Response result;
         Message welcomeMessage = this.boundary.getHelloMessage();

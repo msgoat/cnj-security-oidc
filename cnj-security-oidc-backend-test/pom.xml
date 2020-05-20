@@ -18,7 +18,7 @@
         <!-- common test dependencies -->
         <junit.version>5.6.0</junit.version>
         <restassured.version>3.3.0</restassured.version>
-        <cnj.common.test.version>1.2.0</cnj.common.test.version>
+        <cnj.common.test.version>1.3.0</cnj.common.test.version>
         <!-- pinning versions of common maven plugins -->
         <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
@@ -34,7 +34,7 @@
         <maven.source.plugin.version>3.2.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
         <!-- new Maven version management -->
-        <revision>3.0.0</revision>
+        <revision>3.1.0</revision>
         <sha1></sha1>
         <changelist></changelist>
     </properties>
@@ -236,7 +236,7 @@
         <repository>
             <id>at41-maven-repository</id>
             <name>msg Automotive AT Maven Releases Repository</name>
-            <url>https://nexus.at.automotive.msg.team/repository/msgoat-maven-releases/</url>
+            <url>https://nexus.at41tools.k8s.aws.msgoat.eu/repository/maven-releases/</url>
         </repository>
     </distributionManagement>
 </project>

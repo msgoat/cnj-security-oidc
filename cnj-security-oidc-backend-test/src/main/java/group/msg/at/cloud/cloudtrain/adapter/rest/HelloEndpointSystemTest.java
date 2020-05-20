@@ -39,7 +39,7 @@ public class HelloEndpointSystemTest {
 
     @Test
     public void getWelcomeMessageWithIdTokenSucceeds() {
-        given().auth().oauth2(fixture.getAccessToken())
+        given().auth().oauth2(fixture.getToken())
                 .accept(ContentType.JSON)
                 .get("api/v1/hello")
                 .then().assertThat()
