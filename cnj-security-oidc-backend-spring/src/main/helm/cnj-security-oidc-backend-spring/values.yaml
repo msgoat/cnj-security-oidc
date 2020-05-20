@@ -6,8 +6,8 @@ replicaCount: 1
 
 image:
   repository: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-security-oidc-backend-spring
-  tag: latest
-  pullPolicy: Always
+  tag: ${project.version}
+  pullPolicy: IfNotPresent
 #  pullSecret: fwp-pull-secret
 
 probes:
@@ -57,14 +57,6 @@ tolerations: []
 affinity: {}
 
 # Keycloak Open ID Connect Provider configuration
-keycloak:
-  realm: "cloudtrain"
-  authServerUrl: "http://k8sapps.at.automotive.msg.team/auth"
-  sslRequired: "none"
-  resource: "cnj-cloudtrain"
-  credentialsSecret: "5268cc21-a423-48cc-8082-4930b070354e"
-  useResourceRoleMappings: true
-  principalAttribute: "preferred_username"
-  bearerOnly: true
-  verifyTokenAudience: false
-
+oidc:
+  jwt:
+    jwtSetUri: https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs

@@ -6,8 +6,8 @@ replicaCount: 1
 
 image:
   repository: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-security-oidc-backend-javaee
-  tag: latest
-  pullPolicy: Always
+  tag: ${project.version}
+  pullPolicy: IfNotPresent
 
 probes:
   readiness:
@@ -54,5 +54,5 @@ affinity: {}
 # security configuration (MP JWT AUTH)
 mp:
   jwt:
-    verifyPublicKeyLocation: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain/protocol/openid-connect/certs"
-    verifyIssuer: "http://k8sapps.at.automotive.msg.team/auth/realms/cloudtrain"
+    verifyPublicKeyLocation: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs"
+    verifyIssuer: "https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain"
