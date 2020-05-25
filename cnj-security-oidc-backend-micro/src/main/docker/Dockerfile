@@ -8,7 +8,7 @@ LABEL maintainer="michael.theis@msg.group" \
 ENV JAVA_OPTS="" \
     DOCKER_JAVA_OPTS="" \
     PAYARA_JAVA_OPTS="" \
-    PAYARA_ARGUMENTS="--logproperties /home/payara/payara-logging.properties"
+    PAYARA_ARGUMENTS=""
 
 RUN echo "adding run user payara to system" \
     && addgroup -g 1000 -S payara \
@@ -17,7 +17,6 @@ RUN echo "adding run user payara to system" \
 # copy build artifact into payara deployment folder
 COPY *.jar /home/payara/
 COPY docker-entrypoint.sh /home/payara/
-COPY payara-logging.properties /home/payara/
 
 RUN chown -R payara:payara /home/payara \
     && chmod u+x /home/payara/docker-entrypoint.sh
