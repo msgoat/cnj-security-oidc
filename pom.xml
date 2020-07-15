@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>group.msg.at.cloud</groupId>
     <artifactId>cnj-security-oidc</artifactId>
-    <version>3.0.0</version>
+    <version>4.0.0</version>
     <packaging>pom</packaging>
     <description>Cloud native Java application showcase for OpenID Connect security</description>
     <properties>
@@ -25,7 +25,6 @@
         <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
     </properties>
     <modules>
-        <module>cnj-security-oidc-backend-test</module>
         <module>cnj-security-oidc-backend-javaee</module>
         <module>cnj-security-oidc-backend-micro</module>
         <module>cnj-security-oidc-backend-spring</module>
