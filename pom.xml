@@ -28,6 +28,7 @@
         <module>cnj-security-oidc-backend-javaee</module>
         <module>cnj-security-oidc-backend-micro</module>
         <module>cnj-security-oidc-backend-spring</module>
+        <module>cnj-security-oidc-backend-quarkus</module>
     </modules>
     <build>
         <plugins>
