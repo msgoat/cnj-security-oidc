@@ -2,9 +2,11 @@
 
 Showcase of a "Hello-World" style cloud native Java application using OpenID Connect for REST endpoint protection.
 The actual integration of OpenID Connect security is demonstrated with three different Java backend technologies:
-* Java EE (see: cnj-security-oidc-backend-javaee)
-* Eclipse MicroProfile (see: cnj-security-oidc-backend-micro)
-* Spring Boot (see: cnj-security-oidc-backend-spring)
+
+* Java EE (see: [cnj-security-oidc-backend-javaee](cnj-security-oidc-backend-javaee/README.md))
+* Eclipse MicroProfile (see: [cnj-security-oidc-backend-micro](cnj-security-oidc-backend-micro/README.md))
+* Spring Boot (see: [cnj-security-oidc-backend-spring](cnj-security-oidc-backend-spring/README.md))
+* Quarkus (see: [cnj-security-oidc-backend-quarkus](cnj-security-oidc-backend-quarkus/README.md))
 
 In this showcase, KeyCloak is used as an OpenID Connect Authentication Provider. 
 
@@ -13,7 +15,7 @@ In this showcase, KeyCloak is used as an OpenID Connect Authentication Provider.
 
 ## Release information
 
-Latest version is: `3.1.0`.
+Latest version is: `4.0.0`.
 
 A changelog can be found in [changelog.md](changelog.md).
 
