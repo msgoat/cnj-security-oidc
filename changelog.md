@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2020-07-20
+### Added
+### Changed
+- upgraded to Payara 5.2020.2
+- upgraded to Spring Boot 2.3.1
+- added Quarkus showcase
+
 ## [3.1.0] - 2020-05-20
 ### Added
 ### Changed
