@@ -5,10 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-security-oidc-backend-spring
+  repository: ${docker.image.name}
   tag: ${project.version}
   pullPolicy: IfNotPresent
-#  pullSecret: fwp-pull-secret
 
 probes:
   readiness:
@@ -48,4 +47,4 @@ affinity: {}
 # Keycloak Open ID Connect Provider configuration
 oidc:
   jwt:
-    jwtSetUri: https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs
+    jwkSetUri: https://iam.at41tools.k8s.aws.msgoat.eu/auth/realms/cloudtrain/protocol/openid-connect/certs

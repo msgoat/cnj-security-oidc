@@ -5,10 +5,9 @@
 replicaCount: 1
 
 image:
-  repository: docker.at41tools.k8s.aws.msgoat.eu/cloudtrain/cnj-security-oidc-backend-micro
+  repository: ${docker.image.name}
   tag: ${project.version}
   pullPolicy: IfNotPresent
-#  pullSecret: fwp-pull-secret
 
 probes:
   readiness:
