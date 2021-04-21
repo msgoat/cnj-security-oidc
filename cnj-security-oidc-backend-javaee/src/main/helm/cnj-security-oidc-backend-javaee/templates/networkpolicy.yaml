@@ -3,15 +3,11 @@ kind: NetworkPolicy
 metadata:
   name: {{ include "cnj-security-oidc-backend-javaee.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "cnj-security-oidc-backend-javaee.name" . }}
-    helm.sh/chart: {{ include "cnj-security-oidc-backend-javaee.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- include "cnj-security-oidc-backend-javaee.labels" . | nindent 4 }}
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "cnj-security-oidc-backend-javaee.name" . }}
-      app.kubernetes.io/instance: {{ .Release.Name }}
+      {{- include "cnj-security-oidc-backend-javaee.selectorLabels" . | nindent 6 }}
   policyTypes:
     - Ingress
   ingress:

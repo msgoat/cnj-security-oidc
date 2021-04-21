@@ -11,11 +11,11 @@ The actual integration of OpenID Connect security is demonstrated with three dif
 In this showcase, KeyCloak is used as an OpenID Connect Authentication Provider. 
 
 ## Status
-![Build status](https://drone.at41tools.k8s.aws.msgoat.eu/api/badges/msgoat/cnj-security-oidc/status.svg)
+![Build status](https://drone.cloudtrain.aws.msgoat.eu/api/badges/msgoat/cnj-security-oidc/status.svg)
 
 ## Release information
 
-Latest version is: `4.0.0`.
+Check changelog for latest version and release information.
 
 A changelog can be found in [changelog.md](changelog.md).
 

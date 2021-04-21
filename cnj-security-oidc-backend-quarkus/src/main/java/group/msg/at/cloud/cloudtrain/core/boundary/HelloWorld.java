@@ -1,6 +1,7 @@
 package group.msg.at.cloud.cloudtrain.core.boundary;
 
 import group.msg.at.cloud.cloudtrain.core.entity.Message;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.Dependent;
@@ -21,6 +22,9 @@ public class HelloWorld {
 
     @Inject
     Principal principal;
+
+    @Inject
+    JsonWebToken jwt;
 
     public Message getHelloMessage() {
         return new Message(UUID.randomUUID(), "hello", String.format(WELCOME_MESSAGE_TEMPLATE, getAuthenticatedUserName()));
